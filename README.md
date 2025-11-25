@@ -1,4 +1,4 @@
-Collecting workspace information# Vite React Workflows Demo
+# Vite React Workflows Demo
 
 A demonstration project showcasing GitHub Actions CI/CD workflows with a React application built using Vite.
 
