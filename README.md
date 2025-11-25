@@ -96,35 +96,5 @@ npm test
 | `npm run preview` | Preview production build locally |
 | `npm test`        | Run test suite                   |
 
-## 🔄 GitHub Actions Workflows
+## 🔄 GitHub Actions Workflows (You can find Detailed README.md in .github/workflows folder)
 
-### Deployment Workflow (deployment.yml)
-
-Runs on every push and manual trigger:
-
-1. **Test Job**: Checks out code, installs dependencies, and runs tests
-2. **Deploy Job**: Builds the project and deploys (depends on test success)
-
-### Output Workflow (output.yml)
-
-Manual trigger to display GitHub context information for debugging.
-
-## 📚 Components
-
-- **`App`**: Root component with header and logo
-- **`MainContent`**: Container managing help visibility state
-- **`HelpArea`**: Displays collection of help items
-- **`HelpBox`**: Reusable component for individual help items
-
-## ✅ Testing
-
-The project includes unit tests for the `MainContent` component using React Testing Library:
-
-- Tests button rendering
-- Tests help area visibility toggle functionality
-
-Run tests with: `npm test`
-
-## 📄 License
-
-This project is provided as-is for educational purposes.
