@@ -5,6 +5,14 @@ on:
     types:
       - opened # Trigger on pull request opened
   workflow_dispatch:
+  push:
+    #event filters
+    branches:
+      - main
+      - "dev-*" #dev-new dev-this-is-new
+      - "feat/**" #feat/new feat/another/feature
+#    paths-ignore:
+#      - ".github/workflows/*"
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,7 +27,7 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
-  deploy:
+  build:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -33,5 +41,14 @@ jobs:
         run: npm ci
       - name: Build project
         run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist/ #  path/to/artifact
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy
         run: echo "Deploying ..."
