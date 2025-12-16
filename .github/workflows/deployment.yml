@@ -3,7 +3,7 @@ name: Deploy Project
 on:
   pull_request:
     types:
-      - opened # Trigger on pull request opened
+      - opened # Trigger on pull request opened.
   workflow_dispatch:
   push:
     #event filters
