@@ -1,16 +1,18 @@
 name: Deploy Project
-#on: [push, workflow_dispatch]
 on:
-  pull_request:
-    types:
-      - opened # Trigger on pull request opened.
   workflow_dispatch:
-  push:
-    #event filters
-    branches:
-      - main
-      - "dev-*" #dev-new dev-this-is-new
-      - "feat/**" #feat/new feat/another/feature
+#on: [push, workflow_dispatch]
+#on:
+#  pull_request:
+#    types:
+#      - opened # Trigger on pull request opened.
+#  workflow_dispatch:
+#  push:
+#event filters
+#    branches:
+#      - main
+#      - "dev-*" #dev-new dev-this-is-new
+#      - "feat/**" #feat/new feat/another/feature
 #    paths-ignore:
 #      - ".github/workflows/*"
 jobs:
