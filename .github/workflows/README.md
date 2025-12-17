@@ -1,4 +1,3 @@
-
 ## 🔄 GitHub Actions Workflows
 
 ### Deployment Workflow (`.github/workflows/deployment.yml`)
@@ -18,8 +17,8 @@ The `deploy` job is configured with `needs: test` to ensure it only executes if 
 
 | Step                     | Implementation                                        | Rationale                                                                                                                                             |
 | ------------------------ | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Download Code**        | `uses: actions/checkout@v3`                           | The runner is a clean environment and must first fetch the repository's source code to work with it                                                   |
-| **Setup NodeJS**         | `uses: actions/setup-node@v3` with `node-version: 18` | Installs and configures Node.js 18, ensuring a consistent environment regardless of the runner's default version                                      |
+| **Download Code**        | `uses: actions/checkout@v4`                           | The runner is a clean environment and must first fetch the repository's source code to work with it                                                   |
+| **Setup NodeJS**         | `uses: actions/setup-node@v4` with `node-version: 18` | Installs and configures Node.js 18, ensuring a consistent environment regardless of the runner's default version                                      |
 | **Install Dependencies** | `run: npm ci`                                         | Installs dependencies from `package-lock.json`. `npm ci` is preferred in CI environments for faster, more reliable builds using exact locked versions |
 | **Run Tests**            | `run: npm test`                                       | Executes the project's automated test suite. If any test fails, this job fails, preventing the deploy job from running                                |
 
@@ -27,8 +26,8 @@ The `deploy` job is configured with `needs: test` to ensure it only executes if 
 
 | Step                     | Implementation                                        | Rationale                                                                               |
 | ------------------------ | ----------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| **Download Code**        | `uses: actions/checkout@v3`                           | Each job runs on a separate runner, so the code must be checked out again               |
-| **Setup NodeJS**         | `uses: actions/setup-node@v3` with `node-version: 18` | Ensures the correct Node.js environment for the build process                           |
+| **Download Code**        | `uses: actions/checkout@v4`                           | Each job runs on a separate runner, so the code must be checked out again               |
+| **Setup NodeJS**         | `uses: actions/setup-node@v4` with `node-version: 18` | Ensures the correct Node.js environment for the build process                           |
 | **Install Dependencies** | `run: npm ci`                                         | Dependencies are required for the build step                                            |
 | **Build Project**        | `run: npm run build`                                  | Compiles source code and bundles assets for production                                  |
 | **Deploy**               | `run: echo "Deploying..."`                            | Simulates deployment. In production, this would upload built assets to a hosting server |
@@ -76,4 +75,3 @@ Run tests with: `npm test`
 - **Reliability**: Lock file usage prevents dependency version issues
 - **Efficiency**: Multi-job structure allows parallel execution where applicable
 - **Safety**: Failed tests automatically prevent faulty deployments
-
